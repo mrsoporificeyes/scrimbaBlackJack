@@ -1,0 +1,33 @@
+h1 {
+    color: goldenrod;
+    text-align: center;
+}
+
+body {
+    background-color: green;
+    background-image: url("images/sky-bg.jpeg");
+    background-size: cover;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: bold ;
+}
+
+#message-el {
+    font-style: italic;
+}
+
+button {
+    font-weight: bold;
+    color: #016f32;
+    text-decoration: solid;
+    width: 150px;
+    background: goldenrod;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 2px;
+    cursor: grab;
+}
