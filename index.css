@@ -31,3 +31,7 @@ button {
     border-radius: 2px;
     cursor: grab;
 }
+
+p {
+    color: black;
+}

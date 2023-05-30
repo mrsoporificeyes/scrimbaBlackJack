@@ -1,26 +1,47 @@
-let firstCard = 10
-let secondCard = 4
-let cards = [firstCard, secondCard]
-let sum = firstCard + secondCard 
+let player = {
+    name: "Player",
+    chips: 0
+}
+
+let cards = []
+let sum = 0 
 let hasBlackJack = false
-let isAlive = true
+let isAlive = false
 let message = ""
-
 let messageEl = document.getElementById("message-el")
-console.log(messageEl)
-
-let cardEl = document.getElementById("card-el")
-cardEl.textContent = "Cards: firstCard + secondCard"
-
 let sumEl = document.getElementById("sum-el")
+let cardsEl = document.getElementById("cards-el")
+let playerEl = document.getElementById("player-el")
+
+playerEl.textContent = player.name + ": $" + player.chips
+
+function getRandomCard() {
+    let randomNumer = Math.floor( Math.random()*13 ) + 1 // 1-13
+    if ( randomNumer > 11) {
+        return 10
+    } else if ( randomNumer === 1 ) {
+        return 11 
+    } else {
+        return randomNumer 
+    }
+}
+
 
 function startGame() {
+    isAlive = true
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
     renderGame()
 }
 
 function renderGame() {
-    cardEl.textContent = "Cards: " + cards[0] +"  "+ cards 
-
+    cardsEl.textContent = "Cards: " 
+    for ( let i = 0; i < cards.length; i++) {
+        cardsEl.textContent += cards[i] + " "
+        
+}
     sumEl.textContent = "Sum:  " + sum
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
@@ -32,12 +53,27 @@ function renderGame() {
         isAlive = false
     }
     messageEl.textContent = message
+
+    if (hasBlackJack === true) {
+        playerEl.textContent = player.name + ": $200 Congraatulations" 
+    } else if (hasBlackJack === false) {
+        playerEl.textContent = player.name + ": $" + player.chips 
+    }
 }
 
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
-    let card = 7
-    sum += card
-    renderGame()
+    if ( isAlive === true && hasBlackJack === false) {
+          let card = getRandomCard()
+          sum += card
+          cards.push(card)
+          renderGame()
+          }
+}
+
+
+if (hasBlackJack === true) {
+    playerEl.textContent = player.name + ": $200 Congraatulations" 
+} else if (hasBlackJack === false) {
+    playerEl.textContent = player.name + ": $" + player.chips 
 }
